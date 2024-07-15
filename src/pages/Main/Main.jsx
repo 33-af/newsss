@@ -12,20 +12,22 @@ const Main = () => {
       const fetchNews = async () => {
           try {
               const response = await getNews();
-             
+              if (response && response.news) {
                   setNews(response.news);
-              
-          }catch (error) {
+              } else {
+                  setNews([]); // Ensure news is an empty array if response is invalid
+              }
+          } catch (error) {
               console.error('Error in fetchNews:', error);
-             
+              setNews([]); // Set news to an empty array in case of an error
           }
-        }
+      };
+
       fetchNews();
   }, []);
 
   return (
       <main className={styles.main}>
-        {/* проверка на ошибку тоесть является ли элемент в массиве */}
           {news.length > 0 ? <NewsBanner item={news[0]} /> : <p>No news available.</p>}
           <NewsList news={news}/>
       </main>
