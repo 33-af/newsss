@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const BASE_URL = import.meta.env.VITE_NEWS_BASE_API_URL;
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://api.currentsapi.services/v1';
 
 export const getNews = async () => {
   try {
