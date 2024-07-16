@@ -1,13 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = '/api';
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-
-
 
 export const getNews = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/latest-news`, {
+    const response = await axios.get('/api/latest-news', {
       params: {
         apiKey: API_KEY,
       },
