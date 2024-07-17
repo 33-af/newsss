@@ -5,8 +5,9 @@ import { getCategories, getNews } from '../../api/apiNews';
 import { useState } from 'react';
 import NewsList from '../../NewsList/NewsList';
 import Skeleton from '../../components/Skeleton/Skeleton';
-import Pagination from '../../components/Pagination/Pagination';
+import Pagination from '../../components/Pagination/Pagination'; // Первый импорт Pagination
 import Categories from '../../components/Categories/Categories';
+
 
 const Main = () => {
   const [news, setNews] = useState([]);
@@ -16,8 +17,6 @@ const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState('All'); // выбранная категория новостей.
   const totalPages = 10; // всего страниц
   const pageSize = 10; // количество новостей на странице.
-
-
 
   // fetchNews - функция для получения новостей с заданными параметрами
   const fetchNews = async (currentPage) => {
@@ -37,6 +36,7 @@ const Main = () => {
       setIsLoading(false);
     }
   };
+
   // функция для получения списка категорий.
   const fetchCategories = async () => {
     try {
@@ -86,7 +86,7 @@ const Main = () => {
       ) : (
         <Skeleton type={'banner'} count={1} />
       )}
-      <Pagination
+      <Pagination // Использование компонента Pagination
         handlePreviousPage={handlePreviousPage}
         handleNextPage={handleNextPage}
         handlePageClick={handlePageClick}
